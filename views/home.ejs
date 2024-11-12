@@ -1,0 +1,57 @@
+<%- include('partials/header.ejs'); -%>
+  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis ">
+    <div class="col-lg-6 px-0">
+      <h1 class="display-4 fst-italic">My Library</h1>
+      <p class="lead my-3">
+        "READING IS TO THE MIND WHAT EXERCISE IS TO THE BODY"<br />-Richard Steele
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% for( let book of books ) { %>
+      <div class="card col-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBgCPQmyPHrOWxnUvbmQIRwOipjW8woZUreA&s" class="img-fluid img-thumbnail" alt="book cover" />
+        <div class="card-body">
+          <h5 class="card-title" name="title">
+            <%= book.title %>
+          </h5>
+          <p name="author">by <%= book.author %>
+          </p>
+          <p name="rating">
+            Rating <%= book.rating %>
+          </p>
+          <p name="description" class="card-text">
+            <%= book.description %>
+          </p>
+
+
+          <div class="d-flex">
+            <div>
+              <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                data-bs-target="#editModal<%= book.id %>">
+                Edit
+              </button>
+              <%- include('partials/edit.ejs', { book: book }); -%>
+            </div>
+            <div>
+              <form action="/delete" method="post">
+                <button id="<%= book.id %>" name="deleteBookId" value="<%= book.id %>" type="submit"
+                  class="btn btn-outline-danger">
+                  Delete
+                </button>
+              </form>
+            </div>
+            <div>
+              <button name="viewNotes<%= book.id %>" value="<%= book.id %>" type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                data-bs-target="#notesModal<%= book.id %>">
+                View Notes
+              </button>
+              <%- include('partials/notes.ejs', { book: book, notes: notes}); -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+  </div>
+  <%- include('partials/add.ejs'); -%>
+    <%- include('partials/footer.ejs'); -%>

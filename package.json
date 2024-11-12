@@ -1,0 +1,20 @@
+{
+  "name": "my-books",
+  "version": "1.0.0",
+  "main": "home.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "bootstrap-icons": "^1.11.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "pg": "^8.13.0"
+  }
+}

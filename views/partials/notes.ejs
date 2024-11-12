@@ -1,0 +1,37 @@
+<div class="modal fade" id="notesModal<%= book.id %>" tabindex="-1" aria-labelledby="aria-labelledby" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modal-title">Book Notes: </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Display all notes -->
+        <% for( let note of notes ) { %>
+          <% if (note.book_id === book.id) { %>
+            <div id="note-<%= note.id %>">
+              <p><%= note.note %></p>
+              <!-- Delete form for each note -->
+              <form action="/deleteNote" method="post" class="d-inline">
+                <button id="deleteNote<%= note.id %>" name="deleteNoteButton" value="<%= note.id %>" type="submit" class="btn btn-outline-danger">
+                  Delete
+                </button>
+              </form>
+            </div>
+          <% } %>
+        <% } %>
+
+        <!-- Add a new note form -->
+        <form method="post" action="/addNote">
+          <div class="mb-3">
+            <input type="text" class="form-control transparent-input" name="newNote" placeholder="Enter Note Here..." required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" name="addNoteButton" value="<%= book.id %>">Add Note</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

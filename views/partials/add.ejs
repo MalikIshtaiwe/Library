@@ -1,0 +1,41 @@
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="aria-labelledby" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modal-title">Book Content</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/add">
+          <div class="mb-3">
+            <label for="book-title" class="col-form-label">Book Title:</label>
+            <input type="text" class="form-control" id="book-title" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="auhtor" class="col-form-label">Author:</label>
+            <input type="text" class="form-control" id="auhtor" name="author">
+          </div>
+          <div class="mb-3">
+            <label for="rating" class="col-form-label">Rating:</label>
+            <select class="form-control" id="rating" name="rating">
+              <% for( let index=1; index <=10; index++ ) { %>
+
+                <option value="<%=index %>">
+                  <%= index %>
+                </option>
+                <% } %>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="short-description" class="col-form-label">Short Description:</label>
+            <textarea class="form-control" id="short-description" name="description"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add Book</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

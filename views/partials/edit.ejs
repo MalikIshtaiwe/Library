@@ -1,0 +1,40 @@
+<div class="modal fade" id="editModal<%= book.id %>" tabindex="-1" aria-labelledby="aria-labelledby" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-title">Book Content</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="/edit">
+            <div class="mb-3">
+              <label for="book-title" class="col-form-label">Book Title:</label>
+              <input type="text" class="form-control" id="book-title" name="updatedTitle" value="<%= book.title %>">
+            </div>
+            <div class="mb-3">
+              <label for="author" class="col-form-label">Author:</label>
+              <input type="text" class="form-control" id="author" name="updatedAuthor" value="<%= book.author %>">
+            </div>
+            <div class="mb-3">
+              <label for="rating" class="col-form-label">Rating:</label>
+              <select class="form-control" id="rating" name="updatedRating">
+                <% for( let index=1; index <=10; index++ ) { %>
+                  <option value="<%=index %>" <%= index === book.rating ? 'selected' : '' %>>
+                    <%= index %>
+                  </option>
+                  <% } %>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="short-description" class="col-form-label">Short Description:</label>
+              <textarea class="form-control" id="short-description" name="updatedDescription"><%= book.description %></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" name="editButton" value="<%= book.id %>">Edit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
