@@ -1,2 +1,2 @@
-this is an incomplete online library.
-it is missing a feature of logging in
+This is an incomplete online library.
+It is missing the feature of registering and loggin in different users.
